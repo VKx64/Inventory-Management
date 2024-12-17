@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="Item Details"
+                android:text="App Settings"
                 android:layout_weight="1"
                 android:textSize="15sp"
                 android:textColor="@color/hints"
