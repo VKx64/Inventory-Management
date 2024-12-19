@@ -97,7 +97,7 @@
                     app:layout_constraintStart_toEndOf="@id/ivDatabaseIcon"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/ibUpload"
+                    app:layout_constraintEnd_toStartOf="@id/ibXLSXUpload"
                     android:layout_marginStart="10dp">
 
                     <!-- Title Text -->
@@ -122,7 +122,7 @@
                 </LinearLayout>
 
                 <ImageButton
-                    android:id="@+id/ibUpload"
+                    android:id="@+id/ibXLSXUpload"
                     android:layout_width="26dp"
                     android:layout_height="match_parent"
                     android:contentDescription="Upload Icon"
@@ -131,12 +131,12 @@
                     app:tint="@color/primary_text"
 
                     android:layout_marginEnd="20dp"
-                    app:layout_constraintEnd_toStartOf="@+id/ibDownload"
+                    app:layout_constraintEnd_toStartOf="@+id/ibXLSXDownload"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <ImageButton
-                    android:id="@+id/ibDownload"
+                    android:id="@+id/ibXLSXDownload"
                     android:layout_width="26dp"
                     android:layout_height="match_parent"
                     android:contentDescription="Download Icon"
@@ -191,7 +191,7 @@
                     app:layout_constraintStart_toEndOf="@id/ivImageIcon"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/ibUpload2"
+                    app:layout_constraintEnd_toStartOf="@id/ibImageUpload"
                     android:layout_marginStart="10dp">
 
                     <!-- Title Text -->
@@ -216,7 +216,7 @@
                 </LinearLayout>
 
                 <ImageButton
-                    android:id="@+id/ibUpload2"
+                    android:id="@+id/ibImageUpload"
                     android:layout_width="26dp"
                     android:layout_height="match_parent"
                     android:contentDescription="Upload Icon"
@@ -225,12 +225,12 @@
                     app:tint="@color/primary_text"
 
                     android:layout_marginEnd="20dp"
-                    app:layout_constraintEnd_toStartOf="@+id/ibDownload2"
+                    app:layout_constraintEnd_toStartOf="@+id/ibImageDownload"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <ImageButton
-                    android:id="@+id/ibDownload2"
+                    android:id="@+id/ibImageDownload"
                     android:layout_width="26dp"
                     android:layout_height="match_parent"
                     android:contentDescription="Download Icon"
