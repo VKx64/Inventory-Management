@@ -152,6 +152,8 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_round_corners"
                 android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:contentDescription="Add Item Icon"
                 app:tint="@color/hints" />
 
@@ -164,6 +166,8 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_round_corners"
                 android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:contentDescription="Add Folder Icon"
                 app:tint="@color/hints" />
 
@@ -176,6 +180,8 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_round_corners"
                 android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:contentDescription="Settings Icon"
                 app:tint="@color/hints" />
 
