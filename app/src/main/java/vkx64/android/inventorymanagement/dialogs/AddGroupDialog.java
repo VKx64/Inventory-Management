@@ -12,10 +12,12 @@ import vkx64.android.inventorymanagement.database.TableGroup;
 public class AddGroupDialog extends Dialog{
 
     private OnGroupAddedListener listener;
+    private int parentGroupId;
 
-    public AddGroupDialog(Context context, OnGroupAddedListener listener) {
+    public AddGroupDialog(Context context, int parentGroupId, OnGroupAddedListener listener) {
         super(context);
         this.listener = listener;
+        this.parentGroupId = parentGroupId;
     }
 
     @Override
@@ -30,7 +32,9 @@ public class AddGroupDialog extends Dialog{
             String name = edtGroupName.getText().toString().trim();
 
             if (!name.isEmpty()) {
-                listener.onGroupAdded(new TableGroup(name, null));
+                // Create a new group with the passed parentGroupId
+                TableGroup newGroup = new TableGroup(name, parentGroupId == -1 ? null : parentGroupId);
+                listener.onGroupAdded(newGroup);
                 dismiss();
             }
         });
