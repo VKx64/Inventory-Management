@@ -9,8 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import vkx64.android.inventorymanagement.Activities.MainMenu;
-import vkx64.android.inventorymanagement.Activities.Settings;
+import vkx64.android.inventorymanagement.activities.MainMenu;
 
 public class MainActivity extends AppCompatActivity {
 
