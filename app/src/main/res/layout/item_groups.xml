@@ -7,7 +7,7 @@
     android:orientation="horizontal"
     android:background="@color/background"
     tools:ignore="HardcodedText"
-    android:padding="16dp">
+    android:paddingVertical="16dp">
 
     <ImageView
         android:id="@+id/ivFolderIcon"

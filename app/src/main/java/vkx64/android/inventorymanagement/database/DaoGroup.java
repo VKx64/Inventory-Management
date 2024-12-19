@@ -34,4 +34,7 @@ public interface DaoGroup {
     // Delete all subgroups under a specific group
     @Query("DELETE FROM `group` WHERE parentGroupId = :parentGroupId")
     void deleteSubGroupsByParentId(int parentGroupId);
+
+    @Query("SELECT * FROM `group` WHERE parentGroupId IS NULL")
+    List<TableGroup> getRootGroups();
 }
