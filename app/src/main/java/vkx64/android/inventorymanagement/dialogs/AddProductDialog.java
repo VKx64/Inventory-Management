@@ -49,6 +49,7 @@ public class AddProductDialog extends Dialog {
                 int storageQty = Integer.parseInt(storageQtyStr);
                 int sellingQty = Integer.parseInt(sellingQtyStr);
 
+                // Set group ID: use 1 for root (No Group)
                 TableProduct product = new TableProduct(
                         productId,
                         category,
@@ -57,7 +58,7 @@ public class AddProductDialog extends Dialog {
                         sellingQty,
                         String.valueOf(System.currentTimeMillis()), // Current timestamp as date_created
                         String.valueOf(System.currentTimeMillis()), // Current timestamp as date_updated
-                        groupId // Associate product with the group
+                        groupId == -1 ? 1 : groupId // Default to "No Group" if in the root view
                 );
 
                 listener.onProductAdded(product);

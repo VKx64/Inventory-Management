@@ -95,6 +95,9 @@ public class MainMenu extends AppCompatActivity implements ProductAdapter.GroupC
     }
 
     private void addProductToDatabase(TableProduct product) {
+        // If the current parent group ID is -1, assign it to "No Group" (groupId = 1)
+        product.setGroupId(currentParentGroupId == -1 ? 1 : currentParentGroupId);
+
         Executors.newSingleThreadExecutor().execute(() -> {
             DatabaseClient.getInstance(getApplicationContext())
                     .getAppDatabase()
@@ -110,16 +113,13 @@ public class MainMenu extends AppCompatActivity implements ProductAdapter.GroupC
 
     private void loadGroups(int parentGroupId) {
         Executors.newSingleThreadExecutor().execute(() -> {
-            List<TableGroup> groups = parentGroupId == -1
-                    ? DatabaseClient.getInstance(getApplicationContext())
-                    .getAppDatabase()
-                    .daoGroup()
-                    .getRootGroups()
-                    : DatabaseClient.getInstance(getApplicationContext())
+            // Fetch groups
+            List<TableGroup> groups = DatabaseClient.getInstance(getApplicationContext())
                     .getAppDatabase()
                     .daoGroup()
                     .getSubGroupsByParentId(parentGroupId);
 
+            // Fetch products for the current group
             List<TableProduct> products = DatabaseClient.getInstance(getApplicationContext())
                     .getAppDatabase()
                     .daoProduct()
@@ -127,6 +127,10 @@ public class MainMenu extends AppCompatActivity implements ProductAdapter.GroupC
 
             // Combine groups and products
             List<Object> combinedItems = new ArrayList<>();
+
+            // Removed the manual "No Group" addition here to prevent duplicates.
+            // This is because 'groups' already contains the "No Group" item when parentGroupId == -1.
+
             combinedItems.addAll(groups);
             combinedItems.addAll(products);
 

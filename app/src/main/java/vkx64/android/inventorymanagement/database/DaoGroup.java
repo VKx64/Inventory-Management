@@ -20,7 +20,7 @@ public interface DaoGroup {
     List<TableGroup> getAllGroups();
 
     // Retrieve subgroups by parent group ID
-    @Query("SELECT * FROM `group` WHERE parentGroupId = :parentGroupId")
+    @Query("SELECT * FROM `group` WHERE (parentGroupId = :parentGroupId OR (:parentGroupId = -1 AND parentGroupId IS NULL))")
     List<TableGroup> getSubGroupsByParentId(int parentGroupId);
 
     // Update a group
@@ -37,4 +37,11 @@ public interface DaoGroup {
 
     @Query("SELECT * FROM `group` WHERE parentGroupId IS NULL")
     List<TableGroup> getRootGroups();
+
+    @Query("SELECT * FROM `group` WHERE id = :groupId LIMIT 1")
+    TableGroup getGroupById(int groupId);
+
+
+
+
 }
