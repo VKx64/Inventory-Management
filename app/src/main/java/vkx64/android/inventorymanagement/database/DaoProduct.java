@@ -42,4 +42,8 @@ public interface DaoProduct {
     // Delete all products in the table
     @Query("DELETE FROM product")
     void deleteAllProducts();
+
+    // Retrieve products for a specific group
+    @Query("SELECT * FROM product WHERE groupId = :groupId")
+    List<TableProduct> getProductsByGroupId(int groupId);
 }

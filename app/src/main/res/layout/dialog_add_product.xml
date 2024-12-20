@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Product ID Input -->
+    <EditText
+        android:id="@+id/edtProductId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product ID"
+        android:inputType="text"
+        android:background="@drawable/bg_round_corners"
+        android:padding="8dp"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/hints"
+        android:textSize="16sp" />
+
+    <!-- Product Name Input -->
+    <EditText
+        android:id="@+id/edtProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Name"
+        android:inputType="text"
+        android:background="@drawable/bg_round_corners"
+        android:padding="8dp"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/hints"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp" />
+
+    <!-- Category Input -->
+    <EditText
+        android:id="@+id/edtCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Category"
+        android:inputType="text"
+        android:background="@drawable/bg_round_corners"
+        android:padding="8dp"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/hints"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp" />
+
+    <!-- Storage Quantity Input -->
+    <EditText
+        android:id="@+id/edtStorageQty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Storage Quantity"
+        android:inputType="number"
+        android:background="@drawable/bg_round_corners"
+        android:padding="8dp"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/hints"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp" />
+
+    <!-- Selling Quantity Input -->
+    <EditText
+        android:id="@+id/edtSellingQty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Selling Quantity"
+        android:inputType="number"
+        android:background="@drawable/bg_round_corners"
+        android:padding="8dp"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/hints"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp" />
+
+    <!-- Add Product Button -->
+    <Button
+        android:id="@+id/btnAddProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Product"
+        android:backgroundTint="@color/primary_text"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
