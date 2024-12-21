@@ -41,7 +41,7 @@ public interface DaoGroup {
     @Query("SELECT * FROM `group` WHERE id = :groupId LIMIT 1")
     TableGroup getGroupById(int groupId);
 
-
-
+    @Query("SELECT * FROM `group` WHERE name LIKE '%' || :searchQuery || '%'")
+    List<TableGroup> searchGroupsByName(String searchQuery);
 
 }

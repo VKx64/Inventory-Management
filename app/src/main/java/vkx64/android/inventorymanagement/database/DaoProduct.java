@@ -46,4 +46,7 @@ public interface DaoProduct {
     // Retrieve products for a specific group
     @Query("SELECT * FROM product WHERE groupId = :groupId")
     List<TableProduct> getProductsByGroupId(int groupId);
+
+    @Query("SELECT * FROM product WHERE name LIKE '%' || :searchQuery || '%'")
+    List<TableProduct> searchProductsByName(String searchQuery);
 }

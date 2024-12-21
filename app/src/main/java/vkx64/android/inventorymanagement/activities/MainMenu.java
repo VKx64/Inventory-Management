@@ -1,7 +1,10 @@
 package vkx64.android.inventorymanagement.activities;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -33,6 +36,7 @@ public class MainMenu extends AppCompatActivity implements ProductAdapter.GroupC
     private ImageView ivNewFolder, ivNewItem;
     private RecyclerView rvItemList;
     private ProductAdapter groupAdapter;
+    EditText etSearch;
 
     private final String TAG = "MainMenuActivity";
     private int currentParentGroupId = -1;
@@ -70,6 +74,22 @@ public class MainMenu extends AppCompatActivity implements ProductAdapter.GroupC
 
         rvItemList = findViewById(R.id.rvItemList);
         navigationStack = new Stack<>();
+
+        etSearch = findViewById(R.id.etSearch);
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                handleSearch(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
     }
 
     private void initializeRecyclerView() {
@@ -151,6 +171,38 @@ public class MainMenu extends AppCompatActivity implements ProductAdapter.GroupC
                     finish();
                 }
             }
+        });
+    }
+
+    private void handleSearch(String query) {
+        if (query.trim().isEmpty()) {
+            // If the search box is empty, load your default data
+            loadGroups(currentParentGroupId);
+            return;
+        }
+
+        Executors.newSingleThreadExecutor().execute(() -> {
+
+            // 1) Search all groups (folders) by name
+            List<TableGroup> matchingGroups = DatabaseClient.getInstance(getApplicationContext())
+                    .getAppDatabase()
+                    .daoGroup()
+                    .searchGroupsByName(query);
+
+            // 2) Search all products by name (ignore groupId)
+            List<TableProduct> matchingProducts = DatabaseClient.getInstance(getApplicationContext())
+                    .getAppDatabase()
+                    .daoProduct()
+                    .searchProductsByName(query);
+
+            // 3) Combine them
+            List<Object> combinedList = new ArrayList<>();
+            combinedList.addAll(matchingGroups);
+            combinedList.addAll(matchingProducts);
+
+            // 4) Update UI on the main thread
+            Log.d(TAG, "Query: " + query + ", Groups found=" + matchingGroups.size() + ", Products found=" + matchingProducts.size());
+            runOnUiThread(() -> groupAdapter.updateItems(combinedList));
         });
     }
 
